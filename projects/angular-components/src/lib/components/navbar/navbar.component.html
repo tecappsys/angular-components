@@ -1,0 +1,7 @@
+<mat-toolbar class="navbar">
+    <div class="navbarLeft" (click)="navigateToHome()">
+        <!-- <mat-icon>sort</mat-icon> -->
+    </div>
+    <button *ngIf="isDarkTheme" mat-icon-button (click)="onChangeTheme()"><mat-icon>light_mode</mat-icon></button>
+    <button *ngIf="!isDarkTheme" mat-icon-button (click)="onChangeTheme()"><mat-icon>mode_night</mat-icon></button>
+</mat-toolbar>

@@ -1,0 +1,22 @@
+:host ::ng-deep{
+    .mat-toolbar-single-row{
+        min-height: 70px;
+        border-radius: 13px;
+    }
+}
+
+.navbar{
+    margin-bottom: 24px;
+}
+
+.navbarLeft{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 8px;
+    gap: 10px;
+    cursor: pointer;
+    h1{
+        margin: 0;
+    }
+}

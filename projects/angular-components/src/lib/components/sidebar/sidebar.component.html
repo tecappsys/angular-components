@@ -1,0 +1,39 @@
+
+<div class="card-ui">
+    <div class="brand">
+        <tecappsys-icon [name]="!isDarkTheme ? 'brand-short-light' : 'brand-short-dark' " [width]="150" [height]="50"></tecappsys-icon>
+    </div>
+    <div class="menu-list">
+        <ul>
+            <li class="group-head">apps</li>
+            <li class="group-items">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState.next(true)" (closed)="panelOpenState.next(false)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> 
+                                <div class="single-item-icon"><tecappsys-icon name="angular"></tecappsys-icon></div>
+                                <div class="single-item-description">Angular</div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <li>
+                            <a [href]="APP_ANGULAR_SPA">
+                                <div class="item">
+                                    <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
+                                    <div class="single-item-description">SPA</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="APP_ANGULAR_SPOTIFY">
+                                <div class="item">
+                                    <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
+                                    <div class="single-item-description">Spotify</div>
+                                </div>
+                            </a>
+                        </li>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </li>
+        </ul>
+    </div>
+</div>

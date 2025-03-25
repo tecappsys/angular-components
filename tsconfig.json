@@ -3,9 +3,16 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "allowSyntheticDefaultImports": true,
+    "types": [],
     "paths": {
       "angular-components": [
-        "./dist/angular-components"
+        "./dist"
       ]
     },
     "outDir": "./dist/out-tsc",
@@ -19,8 +26,10 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
-    "importHelpers": true,
+    "moduleResolution": "node",
+    "importHelpers": true,    
+    "useDefineForClassFields": false,
+    "strictPropertyInitialization": false,
     "target": "ES2022",
     "module": "ES2022",
     "lib": [
@@ -29,6 +38,7 @@
     ]
   },
   "angularCompilerOptions": {
+    "enableIvy": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
