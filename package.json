@@ -1,14 +1,14 @@
 {
   "name": "angular-components",
-  "version": "0.0.0",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "publish": "npm publish --registry http://44.221.62.135:4873",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^18.1.0",    
     "@angular/cdk": "^18.1.0",
