@@ -5,35 +5,84 @@
     </div>
     <div class="menu-list">
         <ul>
-            <li class="group-head">apps</li>
-            <li class="group-items">
-                <mat-accordion>
-                    <mat-expansion-panel (opened)="panelOpenState.next(true)" (closed)="panelOpenState.next(false)">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title> 
-                                <div class="single-item-icon"><tecappsys-icon name="angular"></tecappsys-icon></div>
-                                <div class="single-item-description">Angular</div>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <li>
-                            <a [href]="APP_ANGULAR_SPA">
-                                <div class="item">
-                                    <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
-                                    <div class="single-item-description">SPA</div>
-                                </div>
-                            </a>
+            @for (level of levels; track $index) {
+                @if (level.active) {
+
+                    @if (level.perfilUsuario === 'public') {
+                        <li class="group-head">
+                            @if(level.path){
+                                <a [href]="level.path">
+                                    {{level.text}}
+                                </a>
+                            }@else{
+                                {{level.text}}
+                            }
                         </li>
-                        <li>
-                            <a [href]="APP_ANGULAR_SPOTIFY">
-                                <div class="item">
-                                    <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
-                                    <div class="single-item-description">Spotify</div>
-                                </div>
-                            </a>
-                        </li>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </li>
+                        
+                        @if (level.children.length > 0) {
+
+                            @for (children of level.children; track $index) {
+
+                                @if(children.active){
+
+                                    <li class="group-items">
+                                        <mat-accordion>
+                                            <mat-expansion-panel 
+                                                [hideToggle]="children.path"
+                                                [expanded]="panelOpenState[children.id]"
+                                                (opened)="onPanelOpen(children.id,children.path)" 
+                                                (closed)="onPanelClose(children.id)"
+                                            >
+                                                <mat-expansion-panel-header>
+                                                    <mat-panel-title>
+                                                        <div class="single-item-icon" [ngClass]="{'item-selected': panelOpenState[children.id]}">
+                                                            @if(children.iconCustom){
+                                                                <tecappsys-icon [name]="children.iconCustom"></tecappsys-icon>
+                                                            }@else if(children.icon){
+                                                                <div class="single-item-icon"><mat-icon>{{children.icon}}</mat-icon></div>
+                                                            }@else{
+                                                                <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
+                                                            }
+                                                        </div> 
+                                                        <div class="single-item-description" [ngClass]="{'item-selected': panelOpenState[children.id]}">
+                                                            {{children.text}}
+                                                        </div>
+                                                    </mat-panel-title>
+                                                </mat-expansion-panel-header>
+
+                                                @if(children.leaf){
+
+                                                    @for (childrenLeft of children.children; track $index) {
+
+                                                        <li>
+                                                            @if(childrenLeft.path){
+                                                                <a [href]="childrenLeft.path">
+                                                                    <div class="item">
+                                                                        @if(childrenLeft.iconCustom){
+                                                                            <tecappsys-icon [name]="childrenLeft.iconCustom"></tecappsys-icon>
+                                                                        }@else if(childrenLeft.icon){
+                                                                            <div class="single-item-icon"><mat-icon>{{childrenLeft.icon}}</mat-icon></div>
+                                                                        }@else{
+                                                                            <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
+                                                                        }
+                                                                        <div class="single-item-description">{{childrenLeft.text}}</div>
+                                                                    </div>
+                                                                </a>
+                                                            }@else{
+                                                                {{childrenLeft.text}}
+                                                            }
+                                                        </li>
+                                                    }
+                                                }
+                                            </mat-expansion-panel>
+                                        </mat-accordion>
+                                    </li>
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         </ul>
     </div>
 </div>

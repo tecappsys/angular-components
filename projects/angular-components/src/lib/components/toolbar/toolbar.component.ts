@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRouteSnapshot, ActivationEnd, Router } from '@angular/router';
 import { ToolbarSearchComponent } from './components/toolbar-search/toolbar-search.component';
 import { ToolbarTitleComponent } from './components/toolbar-title/toolbar-title.component';
@@ -20,6 +20,8 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class ToolbarComponent {
+
+  @Input() public isSearch:boolean = false; 
  
   public entity:string;
   public title:string;
