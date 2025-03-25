@@ -1,12 +1,12 @@
 {
-  "name": "@tecappsys/angular-components",
+  "name": "@tecappsys/library-angular",
   "version": "1.0.0",
   "description": "Librería de componentes Angular de Tecappsys",
   "author": "Tecappsys",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tecappsys/angular-components.git"
+    "url": "https://github.com/tecappsys/library-angular.git"
   },
   "dependencies": {
     "tslib": "^2.0.0"

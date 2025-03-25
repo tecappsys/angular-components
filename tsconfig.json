@@ -11,7 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "types": [],
     "paths": {
-      "angular-components": [
+      "library-angular": [
         "./dist"
       ]
     },
