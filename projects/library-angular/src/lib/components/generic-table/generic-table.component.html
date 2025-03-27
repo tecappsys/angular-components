@@ -1,0 +1,28 @@
+
+<div class="example-container mat-elevation-z8">
+
+    <div class="mat-table-container">
+  
+      <mat-table [dataSource]="tableDataSource">
+  
+        <!-- Position Column -->
+        <ng-container *ngFor="let col of columns" [matColumnDef]="col">
+          <mat-header-cell mat-header-cell *matHeaderCellDef>{{displayedColumns[col].title || col}}</mat-header-cell>
+          <mat-cell *matCellDef="let row" [title]="displayedColumns[col].htmlTitle || ''">
+            <div class="container-mat-cell">
+              <img *ngIf="isImage(col,displayedColumns)" #column class="avatar" [src]="getLabel(row,col,displayedColumns)"> 
+              <iframe *ngIf="isIFrame(col,displayedColumns)" [src]="getLabel(row,col,displayedColumns) | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> 
+              <mat-label *ngIf="isLabel(col,displayedColumns)" #column class="mat-label">
+                {{ getLabel(row,col,displayedColumns) }}
+              </mat-label>
+            </div>
+          </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+      </mat-table>
+    </div>
+  
+  </div>
+  

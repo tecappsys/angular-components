@@ -1,7 +1,5 @@
 <div class="title-content">
-    <button *ngIf="showBackView" mat-icon-button (click)="onBackView()">
-        <mat-icon>arrow_back</mat-icon>
-    </button>
+    <mat-icon *ngIf="showBackView" (click)="onBackView()">arrow_back</mat-icon>
     <div class="breadcrub">
         <span *ngIf="entity !== '' " class="sub-title">{{entity}}</span>
         <span *ngIf="title !== '' " class="title">{{title}}</span>

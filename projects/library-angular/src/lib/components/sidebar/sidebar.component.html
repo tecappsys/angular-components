@@ -1,7 +1,7 @@
 
 <div class="card-ui">
     <div class="brand">
-        <tecappsys-icon [name]="!isDarkTheme ? 'brand-short-light' : 'brand-short-dark' " [width]="150" [height]="50"></tecappsys-icon>
+        <tecappsys-icon [name]="!isDarkTheme ? 'brand_short_light' : 'brand_short_dark' " [width]="150" [height]="50"></tecappsys-icon>
     </div>
     <div class="menu-list">
         <ul>
@@ -11,7 +11,7 @@
                     @if (level.perfilUsuario === 'public') {
                         <li class="group-head">
                             @if(level.path){
-                                <a [href]="level.path">
+                                <a [href]="level.path" [ngClass]="{'item-selected': isItemSelected(level.path)}">
                                     {{level.text}}
                                 </a>
                             }@else{
@@ -35,7 +35,7 @@
                                             >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title>
-                                                        <div class="single-item-icon" [ngClass]="{'item-selected': panelOpenState[children.id]}">
+                                                        <div class="single-item-icon" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
                                                             @if(children.iconCustom){
                                                                 <tecappsys-icon [name]="children.iconCustom"></tecappsys-icon>
                                                             }@else if(children.icon){
@@ -44,7 +44,7 @@
                                                                 <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
                                                             }
                                                         </div> 
-                                                        <div class="single-item-description" [ngClass]="{'item-selected': panelOpenState[children.id]}">
+                                                        <div class="single-item-description" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
                                                             {{children.text}}
                                                         </div>
                                                     </mat-panel-title>
@@ -57,7 +57,7 @@
                                                         <li>
                                                             @if(childrenLeft.path){
                                                                 <a [href]="childrenLeft.path">
-                                                                    <div class="item">
+                                                                    <div class="item" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
                                                                         @if(childrenLeft.iconCustom){
                                                                             <tecappsys-icon [name]="childrenLeft.iconCustom"></tecappsys-icon>
                                                                         }@else if(childrenLeft.icon){
@@ -69,7 +69,9 @@
                                                                     </div>
                                                                 </a>
                                                             }@else{
-                                                                {{childrenLeft.text}}
+                                                                <div class="item" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
+                                                                    {{childrenLeft.text}}
+                                                                </div>
                                                             }
                                                         </li>
                                                     }

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { IconComponent } from '../icons/icon.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +23,7 @@ export class SidebarComponent  {
 
   public APP_ANGULAR_SPA:string = '';
   public APP_ANGULAR_SPOTIFY:string= '';
-
+  public currentUrl: string;
   public levels:Level[]=[
     {
       active:true,
@@ -51,7 +50,7 @@ export class SidebarComponent  {
               leaf:true,
               active:true,
               text:'Spotify',              
-              path:'https://portfolio.angular.tecappsys.com/spotify'
+              path:'http://localhost:4200/spotify/'
             }             
           ]
         },
@@ -69,7 +68,10 @@ export class SidebarComponent  {
 
   public panelOpenState: { [key: number]: boolean } = {};
   
-  public constructor(){}
+  constructor() {
+    this.currentUrl = window.location.href;
+    this.initializePanelStateFromUrl();
+  }
 
   public onPanelOpen(id: number,path?:string): void {
     if(!path){
@@ -83,5 +85,32 @@ export class SidebarComponent  {
   
   public onPanelClose(id: number): void {
     this.panelOpenState[id] = false;
+  }
+
+  public isItemSelected(path?: string): boolean {
+    if (!path) return false;
+    return this.currentUrl === path || this.currentUrl.startsWith(path);
+  }
+
+  private initializePanelStateFromUrl(): void {
+    this.levels.forEach(level => {
+      if (level.active && level.children?.length) {
+        level.children.forEach(child => {
+          if (!child.active) return;
+  
+          // Si la URL coincide con el path del hijo (nivel medio)
+          if (child.path && this.isItemSelected(child.path)) {
+            this.panelOpenState[child.id] = true;
+          }
+  
+          // Si hay hijos internos (nivel más profundo)
+          child.children?.forEach(grandChild => {
+            if (grandChild.path && this.isItemSelected(grandChild.path)) {
+              this.panelOpenState[child.id] = true;
+            }
+          });
+        });
+      }
+    });
   }
 }

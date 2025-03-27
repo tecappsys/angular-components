@@ -1,23 +1,22 @@
-// import moment from 'moment';
-import 'moment-duration-format';
-import 'moment-timezone'
+import { format, intervalToDuration, differenceInSeconds } from 'date-fns';
 import { DATE_FORMAT } from '../enums';
 
 export class DateUtils{
 
-    // public static formatTime(date:number): string{
-    //     const duration = moment.duration(Number(date), 'seconds');
-    //     return moment.utc(duration.asSeconds()).format(DATE_FORMAT.TIME);
-    // }
+    public static formatTime(seconds: number): string {
+        const duration = intervalToDuration({ start: 0, end: seconds * 1000 });
+        const pad = (n: number = 0) => String(n).padStart(2, '0');
+        return `${pad(duration.hours)}:${pad(duration.minutes)}:${pad(duration.seconds)}`;
+    }
 
-    // public static now(){
-    //     return moment().format(DATE_FORMAT.ISO08601)
-    // }
+    public static now(): string {
+        return format(new Date(), DATE_FORMAT.ISO08601);
+    }
 
-    // public static getDiff(fromDate:string, toDate?:string):number{
-    //     const currentDate = toDate ? moment(toDate) : moment();
-    //     const timeLapse = currentDate.diff(fromDate,'seconds');
-    //     return timeLapse
-    // }
+    public static getDiff(fromDate: string, toDate?: string): number {
+        const from = new Date(fromDate);
+        const to = toDate ? new Date(toDate) : new Date();
+        return differenceInSeconds(to, from);
+    }
     
 }
