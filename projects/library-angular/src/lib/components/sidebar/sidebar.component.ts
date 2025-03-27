@@ -50,7 +50,7 @@ export class SidebarComponent  {
               leaf:true,
               active:true,
               text:'Spotify',              
-              path:'http://localhost:4200/spotify/'
+              path:'https://portfolio.angular.tecappsys.com/spotify'
             }             
           ]
         },
