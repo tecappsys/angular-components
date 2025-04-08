@@ -1,7 +1,9 @@
-<mat-toolbar class="navbar">
-    <div class="navbarLeft" (click)="navigateToHome()">
-        <!-- <mat-icon>sort</mat-icon> -->
-    </div>
-    <mat-icon *ngIf="isDarkTheme" (click)="onChangeTheme()">light_mode</mat-icon>
-    <mat-icon *ngIf="!isDarkTheme" (click)="onChangeTheme()">mode_night</mat-icon>
-</mat-toolbar>
+<section class="tecappsys-navbar">
+    <mat-toolbar>
+        <div class="side-left" (click)="navigateToHome()">
+            <!-- <mat-icon>sort</mat-icon> -->
+        </div>
+        <mat-icon *ngIf="isDarkTheme" (click)="onChangeTheme()">light_mode</mat-icon>
+        <mat-icon *ngIf="!isDarkTheme" (click)="onChangeTheme()">mode_night</mat-icon>
+    </mat-toolbar>
+</section>

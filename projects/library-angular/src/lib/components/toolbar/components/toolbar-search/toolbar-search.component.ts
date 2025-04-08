@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'tecappsys-toolbar-search',
   templateUrl: './toolbar-search.component.html',
-  styleUrls: ['./toolbar-search.component.scss'],
   standalone:true,
   imports:[
     FormsModule,

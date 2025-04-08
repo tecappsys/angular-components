@@ -1,11 +1,7 @@
-<div class="container p-0">
-    <div class="row g-0">
-        <div class="col-12 section-title">
-            <tecappsys-toolbar-title [entity]="entity" [title]="title" [showBackView]="showBackView" (backView)="onBackView()"></tecappsys-toolbar-title>
-            @if(isSearch){
-                <tecappsys-toolbar-search (search)="onSearch($event)"></tecappsys-toolbar-search>
-            }
-        </div>
-    </div>
+<div class="tecappsys-toolbar">
+    <tecappsys-toolbar-title [entity]="entity" [title]="title" [showBackView]="showBackView" (backView)="onBackView()"></tecappsys-toolbar-title>
+    @if(isSearch){
+        <tecappsys-toolbar-search (search)="onSearch($event)"></tecappsys-toolbar-search>
+    }
 </div>
 

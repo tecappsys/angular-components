@@ -1,5 +1,5 @@
 
-<div class="card-ui">
+<div class="tecappsys-sidebar">
     <div class="brand">
         <tecappsys-icon [name]="!isDarkTheme ? 'brand_short_light' : 'brand_short_dark' " [width]="150" [height]="50"></tecappsys-icon>
     </div>
@@ -10,13 +10,15 @@
 
                     @if (level.perfilUsuario === 'public') {
                         <li class="group-head">
-                            @if(level.path){
-                                <a [href]="level.path" [ngClass]="{'item-selected': isItemSelected(level.path)}">
-                                    {{level.text}}
-                                </a>
-                            }@else{
-                                {{level.text}}
-                            }
+                            <div class="group-head-item">
+                                @if(level.path){
+                                    <a [href]="level.path" [ngClass]="{'item-selected': isItemSelected(level.path)}">
+                                        <div class="item-description">{{level.text}}</div>
+                                    </a>
+                                }@else{
+                                    <div class="item-description">{{level.text}}</div>
+                                }
+                            </div>                            
                         </li>
                         
                         @if (level.children.length > 0) {
@@ -35,16 +37,16 @@
                                             >
                                                 <mat-expansion-panel-header>
                                                     <mat-panel-title>
-                                                        <div class="single-item-icon" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
+                                                        <div class="group-items-icon group-items-head-icon" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
                                                             @if(children.iconCustom){
                                                                 <tecappsys-icon [name]="children.iconCustom"></tecappsys-icon>
                                                             }@else if(children.icon){
-                                                                <div class="single-item-icon"><mat-icon>{{children.icon}}</mat-icon></div>
+                                                                <mat-icon>{{children.icon}}</mat-icon>
                                                             }@else{
-                                                                <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
+                                                                <mat-icon>arrow_right</mat-icon>
                                                             }
                                                         </div> 
-                                                        <div class="single-item-description" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
+                                                        <div class="group-items-description" [ngClass]="{'item-selected': !panelOpenState[children.id] && isItemSelected(children.path)}">
                                                             {{children.text}}
                                                         </div>
                                                     </mat-panel-title>
@@ -57,20 +59,22 @@
                                                         <li>
                                                             @if(childrenLeft.path){
                                                                 <a [href]="childrenLeft.path">
-                                                                    <div class="item" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
-                                                                        @if(childrenLeft.iconCustom){
-                                                                            <tecappsys-icon [name]="childrenLeft.iconCustom"></tecappsys-icon>
-                                                                        }@else if(childrenLeft.icon){
-                                                                            <div class="single-item-icon"><mat-icon>{{childrenLeft.icon}}</mat-icon></div>
-                                                                        }@else{
-                                                                            <div class="single-item-icon"><mat-icon>arrow_right</mat-icon></div>
-                                                                        }
-                                                                        <div class="single-item-description">{{childrenLeft.text}}</div>
+                                                                    <div class="group-items-left" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
+                                                                        <div class="group-items-icon group-items-left-icon">
+                                                                            @if(childrenLeft.iconCustom){
+                                                                                <tecappsys-icon [name]="childrenLeft.iconCustom"></tecappsys-icon>
+                                                                            }@else if(childrenLeft.icon){
+                                                                                <mat-icon>{{childrenLeft.icon}}</mat-icon>
+                                                                            }@else{
+                                                                                <mat-icon>arrow_right</mat-icon>
+                                                                            }
+                                                                        </div>
+                                                                        <div class="group-items-description">{{childrenLeft.text}}</div>
                                                                     </div>
                                                                 </a>
                                                             }@else{
-                                                                <div class="item" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
-                                                                    {{childrenLeft.text}}
+                                                                <div class="group-items-left" [ngClass]="{'item-selected': isItemSelected(childrenLeft.path)}">
+                                                                    <div class="group-items-description">{{childrenLeft.text}}</div>
                                                                 </div>
                                                             }
                                                         </li>

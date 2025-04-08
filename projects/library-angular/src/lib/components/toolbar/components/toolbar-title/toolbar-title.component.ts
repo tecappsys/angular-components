@@ -5,7 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'tecappsys-toolbar-title',
   templateUrl: './toolbar-title.component.html',
-  styleUrls: ['./toolbar-title.component.scss'],
   standalone:true,
   imports:[
     CommonModule,

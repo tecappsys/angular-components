@@ -1,5 +1,5 @@
-<div class="search-content">
-    <form [formGroup]="searchForm" style="font-size: 18px">
+<div class="tecappsys-toolbar-filter">
+    <form [formGroup]="searchForm">
         <mat-form-field>
                 <input matInput type="search" formControlName="search" placeholder="Search" (keydown.enter)="onSearch()">
                 <mat-icon matSuffix (click)="onSearch()">search</mat-icon>

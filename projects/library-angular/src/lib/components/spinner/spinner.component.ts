@@ -7,7 +7,6 @@ import { IconComponent } from '../icons/icon.component';
   standalone: true,
   selector: 'tecappsys-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.scss'],
   imports:[
     CommonModule,
     IconComponent

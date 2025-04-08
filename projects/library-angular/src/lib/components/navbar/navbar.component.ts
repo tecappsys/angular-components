@@ -6,7 +6,6 @@ import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'tecappsys-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],  
   standalone:true,
   imports:[
     CommonModule,

@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
   standalone:true,
   selector: 'tecappsys-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss'],
   imports:[
     CommonModule,
     ToolbarSearchComponent,

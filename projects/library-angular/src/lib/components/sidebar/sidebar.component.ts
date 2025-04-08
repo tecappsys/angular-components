@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   selector: 'tecappsys-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
   imports:[
     CommonModule,
     IconComponent,
@@ -43,7 +42,7 @@ export class SidebarComponent  {
               leaf:true,
               active:true,
               text:'SPA',
-              path:'https://portfolio.angular.tecappsys.com/spa'
+              path:'http://localhost:4200/spa/'
             },
             {
               id:12,
