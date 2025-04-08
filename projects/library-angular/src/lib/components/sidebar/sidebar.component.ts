@@ -42,7 +42,7 @@ export class SidebarComponent  {
               leaf:true,
               active:true,
               text:'SPA',
-              path:'http://localhost:4200/spa/'
+              path:'https://portfolio.angular.tecappsys.com/spa'
             },
             {
               id:12,
